@@ -17,3 +17,7 @@ clean:
 	@rm -f *.synctex.gz
 	@rm -f *.toc
 	@rm -f *.dvi
+	@rm -f *.bbl
+	@rm -f *.bcf
+	@rm -f *.blg
+	@rm -f *.run.xml

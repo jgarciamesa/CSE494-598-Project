@@ -1,16 +1,21 @@
-\documentclass[12pt]{article}
+\documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[margin=1in]{geometry}
+\usepackage{biblatex}
+\usepackage{hyperref}
+
+\addbibresource{bibliography.bib}
 
 \graphicspath{{./Figures/}}
 
 \title{CSE 494/594 Algorithms in Computational Biology \\
 		Project Proposal}
 \author{Alexandra Dent, Juan Garcia Mesa, Matthew Huff, Raj Shah}
+\date{March 1, 2020}
 
 
 \begin{document}
@@ -18,12 +23,7 @@
 \maketitle
 
 \section{Introduction}
-\subsection{Overview}
-\textit{Introduction of project}
-
-
-\subsection{Background}
-\textit{Topic background information and what's been done}
+\textit{Topic description, background information and what's been done}
 
 \begin{itemize}
 	\item Forensic identification based on DNA
@@ -40,14 +40,34 @@
 
 % comment in latex
 
-\section{Methods-Approach ?}
+\section{Methods}
 
 \begin{itemize}
-	\item Genome Analysis Toolkit Best Practices Pipeline pdf by Van der Auwera et al. (2013)
+	\item Genome Analysis Toolkit Best Practices Pipeline pdf by Van der Auwera et al. (2013) \cite{Auwera2013}.
 	\item Innovation of our approach is combining mtDNA and HLA (DIP-STR method).
 \end{itemize}
 
+Different statistical approaches exist to determine whether the DNA an individual is present in a genomic DNA mixture (e.g. \cite{Cowell2015}, \cite{Homer2008}, \cite{Vohr2015}). However, there is a common pattern that all methods follow and that we intend to replicate. 
+
+First, the development of a robust theoretical framework for detecting the presence of an individual in a mixture sample. We intend to develop a novel framework by combining the power of single nucleotide polymorphisms (SNPs) from mtDNA and HLA, both highly polymorphic. Kuffel et al. \cite{Kuffel2019} conclude that the application of HLA together with any standard short tandem repeat (STR) based analysis (e.g. deletion/insertion polymorphism (DIP-STR)) can show a significant increase in the probability of positive identification. We do not discard the use of DIP-STR to complement and strengthen our analysis.
+
+Then, the following step is to test the limits of differentiating power of our framework through simulation. (\textbf{Include more information or, if not clear yet, add TBD})
+
+Finally, if possible, demonstrate the validity of the simulation results with data from real world samples. Fortunately, there exist many online data bases that provide public data fitted for this validation.
+
+The innovation of the workflow of the project will be combining genomic polymorphism from both mtDNA and HLA. The latter has been understudied and has recently shown promising results when combined with other standard methods \cite{Kuffel2019}. 
+
+
+
+
+
+
+
 %Example of including a figure \\
 %\includegraphics[scale=0.2]{binary_search_tree.png}
+
+\printbibliography
+
+
 
 \end{document}
