@@ -42,18 +42,13 @@
 
 \section{Methods}
 
-\begin{itemize}
-	\item Genome Analysis Toolkit Best Practices Pipeline pdf by Van der Auwera et al. (2013) \cite{Auwera2013}.
-	\item Innovation of our approach is combining mtDNA and HLA (DIP-STR method).
-\end{itemize}
+Different statistical approaches and workflows exist to determine whether the DNA an individual is present in a genomic DNA mixture (e.g. \cite{Cowell2015}, \cite{Homer2008}, \cite{Vohr2015}). However, there is a common pattern that all methods follow and that we intend to replicate. 
 
-Different statistical approaches exist to determine whether the DNA an individual is present in a genomic DNA mixture (e.g. \cite{Cowell2015}, \cite{Homer2008}, \cite{Vohr2015}). However, there is a common pattern that all methods follow and that we intend to replicate. 
+First, the development of a robust theoretical framework for detecting the presence of an individual in a mixture sample is needed. Current probabilistic approaches are generally divided into deterministic versus Bayesian analysis to deconvolute a set with multiple contributors \cite{Hu2014}. We intend to develop a novel framework by combining the power of single nucleotide polymorphisms (SNPs) from mtDNA, well stablished and widely used in the filed of forensic identification, together with HLA, both highly polymorphic genomic regions. Kuffel et al. \cite{Kuffel2019} conclude that the application of HLA together with any standard short tandem repeat (STR) based analysis (e.g. deletion/insertion polymorphism (DIP-STR)) can show a significant increase in the probability of positive identification. We do not discard the use of DIP-STR to complement and strengthen our analysis.
 
-First, the development of a robust theoretical framework for detecting the presence of an individual in a mixture sample. We intend to develop a novel framework by combining the power of single nucleotide polymorphisms (SNPs) from mtDNA and HLA, both highly polymorphic. Kuffel et al. \cite{Kuffel2019} conclude that the application of HLA together with any standard short tandem repeat (STR) based analysis (e.g. deletion/insertion polymorphism (DIP-STR)) can show a significant increase in the probability of positive identification. We do not discard the use of DIP-STR to complement and strengthen our analysis.
+Then, the following step is to test the limits of differentiating power of our framework through computational simulations. Hu et al. (2014) \cite{Hu2014} provide a thorough review of software, including dynamic and web-based, that have been applied to produce accurate analysis of complex DNA profiles. These include LoComatioN \cite{Gill2007}, targeting low-copy DNA profiling in mixed DNA samples, an open-source R package developed by Forensim \cite{Haned2011forensim} that interprets and weights forensic DNA evidence, and LRmix software \cite{Haned2011analysis}, which builds upon the previous Forensim package. Other approaches based on coalescent simulation of pairs of alleles have also been done and remain a possibility, although perhaps slightly out of the scope of this project.
 
-Then, the following step is to test the limits of differentiating power of our framework through simulation. (\textbf{Include more information or, if not clear yet, add TBD})
-
-Finally, if possible, demonstrate the validity of the simulation results with data from real world samples. Fortunately, there exist many online data bases that provide public data fitted for this validation.
+Finally, if possible, demonstrate the validity of the simulation results with data from real world samples. Fortunately, there exist many online data bases that provide public data fitted for this validation. An thorough search is yet to be done to determine what database will be used, given all previous milestones are completed successfully and we are to perform validation with real data.
 
 The innovation of the workflow of the project will be combining genomic polymorphism from both mtDNA and HLA. The latter has been understudied and has recently shown promising results when combined with other standard methods \cite{Kuffel2019}. 
 
