@@ -23,17 +23,14 @@
 \maketitle
 
 \section{Introduction}
-\textit{Topic description, background information and what's been done}
+Forensic genetics encompasses the use of genetics in order to settle legal disputes such as criminal investigations. To do so, biological material such as blood, hair, or semen is collected and its DNA compared against the DNA of some reference sample, such as that of a suspect. Certain highly polymorphic regions of DNA enable satisfactory discrimination between individuals. Since the 1980s, the regions of choice have been the loci of short tandem repeat (STR) sequences, which are repetitive regions 50-500 bp in length that are subject to high mutation rates due to replication slippage. The use of this technique for convoluted samples, which contain DNA from different sources, has been improved by pairing STR polymorphism with deletion/insertion polymorphism (DIP-STR) \cite{Carracedo2000}.
 
-\begin{itemize}
-	\item Forensic identification based on DNA
-	\item mtDNA (Amorim et al.), HLA, DIP-STR (Kuffel et al.) 
-\end{itemize}
+There exist, however, even more possible accessories for deconvolution. Already, in samples where nuclear DNA is dilute or degraded, the circular and robust mitochondrial DNA (mtDNA) is a popular choice for genetic identification due to single-nucleotide polymorphisms (SNPs) in its highly variable control region (16,023-576 bp) \cite{Amorim2019, Lareu2000}. Furthermore, the human leukocyte antigen (HLA) gene system is the most polymorphic in the human genome and the growth of second-generation sequencing may resolve crucial ambiguities in Sanger-based HLA typing \cite{Kuffel2019}.
 
 \section{Motivation}
 Courtrooms demand a high level of confidence for the admission of evidence. Current techniques give the likelihood of falsely matching an innocent suspect, otherwise known as the probability of a man not excluded $P(RMNE)$ between one in a billion to one in a thousand.  A $P(RMNE)$ between $10^{-9}$ and $10^{-6}$ may affect the ability for evidence to be admissable in court. Isaacson, et. al \cite{Isaacson2014}. Current methods, with the inclusion of a minor allele ratio of 0.01 as the only statistically viable results, yielded a $P(RMNE)$ within the guidelines of courtroom admissability requirements with a sample between 3-5 individuals and between 0 and 10 allele mismatches, and anything outside that was deemed to be nonviable for court admissability.  
 
-Mitochondrial DNA, or mtDNA, as a stable maternal line of DNA, reduces some of the stochastic errors as traditional DNA sequencing and allows for more significant analysis assumptions to be made in regards to matching members of the same family line. To the contrary, most HLA class I alleles are very rare, often falling within a single person or family, and the $HLA-A$, $HLA-B$, and $HLA-C$ regions encode highly polymorphic HLA class I molecules. Robinson, et al. \cite{Robinson2017}.  There exists at this time a large HLA sequence database that contains over 10,000 alleles that could be utilized to narrow down matches.  However, work by Robinson et. al. shows that by removing SNP and recombinant alleles reduces HLA class I variability to 11 $HLA-A$, 17 $HLA-B$, and 14 $HLA-C$ alleles that hold all significant variation in exons 2 and 3, which leads to the potential of fast detection of matching HLA alleles.  The combination of matching both stable mtDNA sources and highly varied HLA alleles may yield to a lower probability of $P(RMNE)$ with higher sample numbers for forensic analysis.
+mtDNA, as a stable maternal line of DNA, reduces some of the stochastic errors of traditional DNA sequencing and allows for more significant analysis assumptions to be made in regards to matching members of the same family line. To the contrary, most HLA class I alleles are very rare, often falling within a single person or family, and the $HLA-A$, $HLA-B$, and $HLA-C$ regions encode highly polymorphic HLA class I molecules. Robinson, et al. \cite{Robinson2017}.  There exists at this time a large HLA sequence database that contains over 10,000 alleles that could be utilized to narrow down matches.  However, work by Robinson et. al. shows that by removing SNP and recombinant alleles reduces HLA class I variability to 11 $HLA-A$, 17 $HLA-B$, and 14 $HLA-C$ alleles that hold all significant variation in exons 2 and 3, which leads to the potential of fast detection of matching HLA alleles.  The combination of matching both stable mtDNA sources and highly varied HLA alleles may yield to a lower probability of $P(RMNE)$ with higher sample numbers for forensic analysis.
 
 
 % comment in latex
@@ -42,19 +39,13 @@ Mitochondrial DNA, or mtDNA, as a stable maternal line of DNA, reduces some of t
 
 Different statistical approaches and workflows exist to determine whether the DNA an individual is present in a genomic DNA mixture (e.g. \cite{Cowell2015}, \cite{Homer2008}, \cite{Vohr2015}). However, there is a common pattern that all methods follow and that we intend to replicate. 
 
-First, the development of a robust theoretical framework for detecting the presence of an individual in a mixture sample is needed. Current probabilistic approaches are generally divided into deterministic versus Bayesian analysis to deconvolute a set with multiple contributors \cite{Hu2014}. We intend to develop a novel framework by combining the power of single nucleotide polymorphisms (SNPs) from mtDNA, well stablished and widely used in the filed of forensic identification, together with HLA, both highly polymorphic genomic regions. Kuffel et al. \cite{Kuffel2019} conclude that the application of HLA together with any standard short tandem repeat (STR) based analysis (e.g. deletion/insertion polymorphism (DIP-STR)) can show a significant increase in the probability of positive identification. We do not discard the use of DIP-STR to complement and strengthen our analysis.
+First, the development of a robust theoretical framework for detecting the presence of an individual in a mixture sample is needed. Current probabilistic approaches are generally divided into deterministic versus Bayesian analysis to deconvolute a set with multiple contributors \cite{Hu2014}. We intend to develop a novel framework by combining the power of SNPs from mtDNA, well established and widely used in the filed of forensic identification, together with HLA, both highly polymorphic genomic regions. Kuffel et al. \cite{Kuffel2019} conclude that the application of HLA together with any standard STR-based analysis (e.g. DIP-STR) can show a significant increase in the probability of positive identification. We do not discard the use of DIP-STR to complement and strengthen our analysis.
 
 Then, the following step is to test the limits of differentiating power of our framework through computational simulations. Hu et al. (2014) \cite{Hu2014} provide a thorough review of software, including dynamic and web-based, that have been applied to produce accurate analysis of complex DNA profiles. These include LoComatioN \cite{Gill2007}, targeting low-copy DNA profiling in mixed DNA samples, an open-source R package developed by Forensim \cite{Haned2011forensim} that interprets and weights forensic DNA evidence, and LRmix software \cite{Haned2011analysis}, which builds upon the previous Forensim package. Other approaches based on coalescent simulation of pairs of alleles have also been done and remain a possibility, although perhaps slightly out of the scope of this project.
 
 Finally, if possible, demonstrate the validity of the simulation results with data from real world samples. Fortunately, there exist many online data bases that provide public data fitted for this validation. An thorough search is yet to be done to determine what database will be used, given all previous milestones are completed successfully and we are to perform validation with real data.
 
 The innovation of the workflow of the project will be combining genomic polymorphism from both mtDNA and HLA. The latter has been understudied and has recently shown promising results when combined with other standard methods \cite{Kuffel2019}. 
-
-
-
-
-
-
 
 %Example of including a figure \\
 %\includegraphics[scale=0.2]{binary_search_tree.png}
