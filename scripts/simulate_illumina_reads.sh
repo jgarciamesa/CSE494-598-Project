@@ -6,9 +6,19 @@
 # simulate_illumina_reads.sh
 # Simulate Illumina sequence reads using ART
 
-mkdir -p ../results/simulate_reads
+mkdir -p ./results/simulate_reads
 
 #$1 fasta file
 #$2 prefix for output reads
 
-tools/art_illumina -ss HS25 -i $1 -o $2 -l 150 -f 50 -p -m 500 -s 10 -sp -sam -na
+art_output="$(art_illumina -ss HS25 -i $1 -o $2 -l 150 -f 50 -p -m 500 -s 10 -sp -sam -na)"
+
+fq1name="$(echo "$art_output" | grep "1st reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
+fq2name="$(echo "$art_output" | grep "2nd reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
+
+cp "./$fq1name" "./results/simulate_reads/$fq1name"
+cp "./$fq2name" "./results/simulate_reads/$fq2name"
+
+rm "./$fq1name"
+rm "./$fq2name"
+
