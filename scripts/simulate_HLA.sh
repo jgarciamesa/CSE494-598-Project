@@ -41,7 +41,7 @@ done
 
 
 # initialize mixed sample
-echo -n > results/fasta/mixed_${n}.fasta
+# echo -n > results/fasta/mixed_${n}.fasta
 # simulate diploid alleles for each individual and merge
 for i in $(seq 1 $n)
 do
@@ -66,7 +66,9 @@ do
 done
 
 # save information for "known individual"
-echo -n > results/fasta/mixed_${n}.txt
+# echo -n > results/fasta/mixed_${n}.txt
+echo 'HLA alleles' >> results/fasta/mixed_${n}.txt
+
 grep 'A\*' results/fasta/mixed_${n}.fasta | head -n 2 >> results/fasta/mixed_${n}.txt
 grep 'B\*' results/fasta/mixed_${n}.fasta | head -n 2 >> results/fasta/mixed_${n}.txt
 grep 'C\*' results/fasta/mixed_${n}.fasta | head -n 2 >> results/fasta/mixed_${n}.txt
