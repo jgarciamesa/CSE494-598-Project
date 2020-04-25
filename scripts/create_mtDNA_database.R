@@ -9,13 +9,9 @@ all_haplotypes = vector()
 
 for(group in haplogroups) {
   tmp = paste0("https://www.mitomap.org/cgi-bin/haplo_distribution?hg=",group,"&hpp=10000") %>% read_html() %>% html_nodes(xpath = '//*[@id="haplo-list"]/table') %>% html_table()
-  all_haplotypes = rbind(all_haplotypes, tmp[[1]][,c(2,3)])
+  all_haplotypes = rbind(all_haplotypes, tmp[[1]][,c(2,3,4)])
 }
 
 all_haplotypes$Haplogroup = gsub(" ","-",all_haplotypes$Haplogroup)
 
-write.table(all_haplotypes, file = "data/mtDNA/mtDNA_dataset.tsv", sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE)
-
-
-
-
+write.table(all_haplotypes, file = "data/mtDNA/mtDNA_dataset.tsv", sep = "\t", col.names = FALSE, row.names = FALSE)#, quote = FALSE)
