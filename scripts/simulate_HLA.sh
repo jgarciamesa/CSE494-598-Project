@@ -50,17 +50,17 @@ do
 		for j in $(seq 1 2)
 		do
 			stem=$(basename $gene)  									# get filename
-			length=$(wc -l data/fasta/id_${stem} | egrep -o '^[^ ]+')
+			length=$(wc -l data/fasta/id_${stem} | grep -E -o '^[^[:space:]]')
 			rand=$((1 + RANDOM % $length))  							# random ID position
 			randp1=$(( $rand + 1 ))    									# next position
 			id=$(head -n $rand data/fasta/id_${stem} | tail -n 1)  		# ID
 			bound=$(head -n $randp1 data/fasta/id_${stem} | tail -n 1)  # ID of next
-			pos=$(grep -n $id data/fasta/${stem} | grep -o -E ^[0-9]+)  # position
-			posp1=$(grep -n $bound data/fasta/${stem} | grep -o -E ^[0-9]+) # position of next
+			pos=$(grep -n $id data/fasta/${stem} | grep -o -E ^[[:digit]]+)  # position
+			posp1=$(grep -n $bound data/fasta/${stem} | grep -o -E ^[[:digit:]]+) # position of next
 			pos2=$(($posp1 - 1))
 			l=$(($pos2 - $pos + 1))	  									# length of sequence
 			# concatenate sequence to mixed fasta
-			head -n $pos2 data/fasta/${stem} | tail -n $l >> results/fasta/mixed_${n}.fasta
+			head -n $pos2 data/fasta/${stem} | tail -n ${n} >> results/fasta/mixed_${n}.fasta
 		done
 	done
 done
