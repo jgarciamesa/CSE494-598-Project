@@ -7,6 +7,7 @@ module load samtools/1.9
 module load bcftools/1.9
 module load bamutil/1.0.14
 module load r/latest
+module load maven/3.3.9
 
 # run.sh
 # Usage: bash run.sh n_individuals
@@ -49,6 +50,23 @@ then
 	cd ..
 fi
 
+# Download Kourami if not found
+if [ ! -f tools/kourami-0.9.6/build/Kourami.jar ]
+then
+    echo 'Downloading Kourami'
+    cd tools/
+    rm -rf ./kourami* # clean slate
+    wget https://github.com/Kingsford-Group/kourami/releases/download/v0.9.6/kourami-0.9.6_bin.zip
+    unzip kourami-0.9.6_bin.zip
+    cd kourami-0.9.6
+    mvn install
+    ./scripts/download_panel.sh
+    ./scripts/download_grch38.sh hs38NoAltDH
+    echo 'Indexing; this could take a while...'
+    bwa index ./resources/hs38NoAltDH.fa
+    cd ..
+fi
+
 # if mtDNA_dataset is not been created, do so
 if [ ! -f data/mtDNA/mtDNA_dataset.tsv ]
 then
@@ -77,9 +95,13 @@ art_output="$(tools/art_illumina -ss HS25 -i results/fasta/mixed_${n}.fasta -o m
 
 fq1name="$(echo "$art_output" | grep "1st reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
 fq2name="$(echo "$art_output" | grep "2nd reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
+samname="$(echo "$art_output" | grep -o "[[:alnum:]]*\.sam")"
 
 mv "./$fq1name" "./results/simulate_reads/$fq1name"
 mv "./$fq2name" "./results/simulate_reads/$fq2name"
+mv -t "./results/simulate_reads/" ./$fq1name ./$fq2name ./$samname
+
+echo "Completed; Illumina read results can be found at ./results/simulate_reads/"
 
 ################################################################################
 # Align fastq to human reference genome , sort, and index                      #
