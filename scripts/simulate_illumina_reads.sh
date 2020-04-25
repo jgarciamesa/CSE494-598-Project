@@ -15,7 +15,7 @@ art_output="$(art_illumina -ss HS25 -i $1 -o $2 -l 150 -f 50 -p -m 500 -s 10 -sp
 # grab fastq and sam output file names from output of art command
 fq1name="$(echo "$art_output" | grep "1st reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
 fq2name="$(echo "$art_output" | grep "2nd reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
-samname="$(echo "$art_output" | grep "\.sam" | sed 's/[[:space:]]\(.*\.sam\)/\1/')"
+samname="$(echo "$art_output" | grep -o "[[:alnum:]]*\.sam")"
 
 mv -t "./results/simulate_reads/" ./$fq1name ./$fq2name ./$samname
 echo "Illumina read results can be found at ./results/simulate_reads/"
