@@ -23,15 +23,14 @@ gene_drb1=https://github.com/ANHIG/IMGTHLA/raw/Latest/fasta/DRB1_gen.fasta
 genes=($gene_a $gene_b $gene_c $gene_dqa1 $gene_dqb1 $gene_drb1)
 
 # Download allele sequences
+mkdir -p ./data/fasta
 for gene in ${genes[*]}
 do
 	stem=$(basename $gene)
-	if [ ! -f data/fasta/$stem ]
+	if [ ! -e data/fasta/$stem ]
 	then
 		echo 'Downloading' $stem
-		cd data/fasta
-		wget --quiet $gene
-		cd ../..
+		wget --quiet -O ./data/fasta/$stem $gene
 	fi
 
 	# create list of sequence ID for each gene
@@ -43,6 +42,7 @@ done
 # initialize mixed sample
 # echo -n > results/fasta/mixed_${n}.fasta
 # simulate diploid alleles for each individual and merge
+mkdir -p ./results/fasta
 for i in $(seq 1 $n)
 do
 	for gene in ${genes[*]}
