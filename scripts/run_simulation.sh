@@ -139,3 +139,31 @@ bcftools call --ploidy 1 -m -v -o results/vcf/mixed_${n}.vcf
 
 echo 'mtDNA typing with haplogrep'
 java -jar tools/haplogrep-2.1.25.jar classify --in results/vcf/mixed_${n}.vcf --format vcf --out results/haplogrep_${n}.txt --extend-report
+
+
+###############################################################################
+# Make simulation folder for new data
+###############################################################################
+
+cd simulations
+declare -i numFiles 
+numFiles=$(ls -1 | wc -l)
+((numFiles = numFiles + 1))
+mkdir "simulation_$numFiles"
+cd ../
+
+###############################################################################
+# Move results data into new folder
+###############################################################################
+
+mv "./results" "simulations/simulation_$numFiles"
+
+###############################################################################
+# Remake moved folders
+###############################################################################
+
+mkdir results
+mkdir results/vcf
+mkdir results/simulate_reads
+mkdir results/bam
+mkdir results/fasta
