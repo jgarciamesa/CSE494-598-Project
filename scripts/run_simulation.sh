@@ -64,7 +64,7 @@ then
     ./scripts/download_grch38.sh hs38NoAltDH
     echo 'Indexing; this could take a while...'
     bwa index ./resources/hs38NoAltDH.fa
-    cd ..
+    cd ../..
 fi
 
 # if mtDNA_dataset is not been created, do so
