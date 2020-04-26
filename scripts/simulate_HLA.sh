@@ -55,7 +55,7 @@ do
 			randp1=$(( $rand + 1 ))    									# next position
 			id=$(head -n $rand data/fasta/id_${stem} | tail -n 1)  		# ID
 			bound=$(head -n $randp1 data/fasta/id_${stem} | tail -n 1)  # ID of next
-			pos=$(grep -n $id data/fasta/${stem} | grep -o -E ^[[:digit]]+)  # position
+			pos=$(grep -n $id data/fasta/${stem} | grep -o -E ^[[:digit:]]+)  # position
 			posp1=$(grep -n $bound data/fasta/${stem} | grep -o -E ^[[:digit:]]+) # position of next
 			pos2=$(($posp1 - 1))
 			l=$(($pos2 - $pos + 1))	  									# length of sequence
