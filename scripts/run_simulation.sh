@@ -91,13 +91,13 @@ bash scripts/simulate_HLA.sh $n
 ################################################################################
 
 echo 'Simulating illumina reads with ART'
-art_output="$(tools/art_illumina -ss HS25 -i results/fasta/mixed_${n}.fasta -o mixed_${n} -l 150 -f 50 -p -m 500 -s 10 -sp -sam -na)"
+art_output="$(tools/art_illumina -ss HS25 -i results/fasta/mixed_${n}.fasta -o mixed_${n} -l 150 -f 50 -p -m 500 -s 10 -sp -na)"
 
 fq1name="$(echo "$art_output" | grep "1st reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
 fq2name="$(echo "$art_output" | grep "2nd reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
-samname="$(echo "$art_output" | grep -o "[[:alnum:]_]*\.sam")"
+#samname="$(echo "$art_output" | grep -o "[[:alnum:]_]*\.sam")"
 
-mv -t "./results/simulate_reads/" ./$fq1name ./$fq2name ./$samname
+mv -t "./results/simulate_reads/" ./$fq1name ./$fq2name #./$samname
 
 echo "Completed; Illumina read results can be found at ./results/simulate_reads/"
 
@@ -128,7 +128,7 @@ echo 'Preprocessing bam file for kourami'
 
 # run Kourami
 echo 'HLA typing with Kourami'
-java -jar tools/kourami-0.9.6/build/Kourami.jar -o results/kourami_${n}.txt results/bam/mixed_${n}_on_KouramiPanel.bam -d tools/kourami-0.9.6/db/
+java -jar tools/kourami-0.9.6/build/Kourami.jar -o results/kourami_${n} results/bam/mixed_${n}_on_KouramiPanel.bam -d tools/kourami-0.9.6/db/
 
 ################################################################################
 # Align fastq to reference sequence (rCRS) of Human mtDNA & variant calling    #
