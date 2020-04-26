@@ -97,8 +97,6 @@ fq1name="$(echo "$art_output" | grep "1st reads" | sed 's/.*reads:[[:space:]]\(.
 fq2name="$(echo "$art_output" | grep "2nd reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
 samname="$(echo "$art_output" | grep -o "[[:alnum:]_]*\.sam")"
 
-mv "./$fq1name" "./results/simulate_reads/$fq1name"
-mv "./$fq2name" "./results/simulate_reads/$fq2name"
 mv -t "./results/simulate_reads/" ./$fq1name ./$fq2name ./$samname
 
 echo "Completed; Illumina read results can be found at ./results/simulate_reads/"
