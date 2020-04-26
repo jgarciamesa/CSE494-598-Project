@@ -60,8 +60,8 @@ then
     unzip kourami-0.9.6_bin.zip
     cd kourami-0.9.6
     mvn install
-    ./scripts/download_panel.sh
-    ./scripts/download_grch38.sh hs38NoAltDH
+    bash ./scripts/download_panel.sh
+    bash ./scripts/download_grch38.sh hs38NoAltDH
     echo 'Indexing; this could take a while...'
     bwa index ./resources/hs38NoAltDH.fa
     cd ../..
