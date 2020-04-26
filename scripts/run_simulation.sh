@@ -95,7 +95,7 @@ art_output="$(tools/art_illumina -ss HS25 -i results/fasta/mixed_${n}.fasta -o m
 
 fq1name="$(echo "$art_output" | grep "1st reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
 fq2name="$(echo "$art_output" | grep "2nd reads" | sed 's/.*reads:[[:space:]]\(.*\.fq\).*/\1/')"
-samname="$(echo "$art_output" | grep -o "[[:alnum:]]*\.sam")"
+samname="$(echo "$art_output" | grep -o "[[:alnum:]_]*\.sam")"
 
 mv "./$fq1name" "./results/simulate_reads/$fq1name"
 mv "./$fq2name" "./results/simulate_reads/$fq2name"
