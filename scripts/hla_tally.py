@@ -80,7 +80,7 @@ for simulation_directory_path in simulations_ls_output.splitlines():
 
 simulations.sort(key=(lambda simulation: simulation.n))
 with open('simulations/hla_tally.txt', 'w') as hla_tally:
-    for n in {simulation.n for simulation in simulations}:
+    for n in sorted({simulation.n for simulation in simulations}):
         simulations_with_n_individuals = list(filter(lambda simulation: n == simulation.n, simulations))
         hla_tally.write(f'For {n} individuals:\n')
         num_protein_sequence_matches = sum([sum(simulation_with_n_individuals.num_protein_sequence_matches_by_gene().values()) for simulation_with_n_individuals in simulations_with_n_individuals])
