@@ -16,7 +16,7 @@ main = function(haplogrep_files) {
     known_variants_list = read.csv(known_files[i], skip = 2, header = FALSE, nrows = 1, stringsAsFactors = FALSE)
     known_variants = unlist(known_variants_list, use.names = FALSE)
     
-    haplogrep_result_dataframe = read.csv(haplogrep_files[i], header = TRUE, sep = "\t")
+    haplogrep_result_dataframe = read.csv(haplogrep_files[i], header = TRUE, sep = "\t", stringsAsFactors = FALSE)
     haplogrep_result = strsplit(haplogrep_result_dataframe$Found_Polys, " ")[[1]]
     
     count = 0
