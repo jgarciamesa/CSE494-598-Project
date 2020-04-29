@@ -1,8 +1,8 @@
 #Read in file
 import sys
 
-mixedFileName = 'mixed_5.txt'
-haplogrepFileName = 'haplogrep_5.txt'
+mixedFileName = 'results/fasta/mixed_5.txt'
+haplogrepFileName = 'results/haplogrep_5.txt'
 
 mixedFile = open(mixedFileName, 'r')
 haplogrepFile = open(haplogrepFileName, 'r')
