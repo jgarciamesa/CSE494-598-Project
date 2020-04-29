@@ -29,10 +29,10 @@ main = function(haplogrep_files) {
     
     score = rbind(score, count / length(known_variants))
     
-    #writeLines()# results/fasta/mixed_n.txt 
   }
-  print(sum(score)/length(haplogrep_files))
-  cat(paste0("mtDNA identification score with n individuals and x runs is ",sum(score)/length(haplogrep_files)), file="analysis.txt", append = TRUE, sep = "\n")
+  #print(sum(score)/length(haplogrep_files))
+  #print(gsub("[A-z.]",'', basename(haplogrep_files[1])))
+  cat(paste0("mtDNA identification score with ",gsub("[A-z.]",'', basename(haplogrep_files[1]))," individuals and ",length(haplogrep_files)," runs is ",sum(score)/length(haplogrep_files)), file="analysis.txt", append = TRUE, sep = "\n")
   
 }
 
