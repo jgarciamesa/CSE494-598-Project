@@ -8,7 +8,7 @@ module load bcftools/1.9
 module load bamutil/1.0.14
 module load r/latest
 module load maven/3.3.9
-
+module load python/3.7.1
 # run.sh
 # Usage: bash run.sh n_individuals
 
