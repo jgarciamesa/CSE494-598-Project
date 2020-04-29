@@ -10,8 +10,8 @@ mixedFileLines = mixedFile.read().split("\n")
 mixedFileContents = mixedFileLines[2].split(", ")
 haplogrepFileContents = haplogrepFile.read().replace(" ", ' ').split("\n")
 haplogrepFileContents[0] = haplogrepFileContents[0].replace(' ', '').replace('""', ',').replace('"', '').split(',')
-haplogrepFileContents[1] = haplogrepFileContents[1].replace('  ', '').replace('"""', '"" "').replace('" "', ',').replace('"', '').split(',')
-types = haplogrepFileContents[1][7].split(" ")
+haplogrepFileContents[1] = haplogrepFileContents[1].replace('  ', '').replace('"""', '"" "').replace('" "', ',').replace('"', '').split('\t')
+types = haplogrepFileContents[1][6].split(" ")
 count = 0
 for i in types:
     for j in mixedFileContents:
